@@ -1,6 +1,7 @@
 package com.oxiane.kata.bank;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +32,17 @@ public class BankTest {
 	}
 
 	@Test
+	void should_getBalance_throw_AccountNonExistentException_when_account_not_exists()  {
+		// given
+		String accountid = "autreId";
+		
+		// when
+		
+		// then
+        assertThrows(AccountNonExistentException.class, () -> bank.getBalance(accountid)); 
+	}
+
+	@Test
 	void should_deposit_money() throws AccountNonExistentException {
 		//given
 		String accountid = DEFAULT_ACCOUNTID;
@@ -43,5 +55,17 @@ public class BankTest {
 		assertThat(isComplete).isEqualTo(true);
 		assertThat(bank.getBalance(accountid)).isEqualTo(amount + DEFAULT_BALANCE);
 		
+	}
+
+	@Test
+	void should_deposit_throw_AccountNonExistentException_when_account_not_exists()  {
+		// given
+		String accountid = "autreId";
+		double amount = 50;
+		
+		// when
+		
+		// then
+        assertThrows(AccountNonExistentException.class, () -> bank.depositMoney(accountid, amount)); 
 	}
 }
