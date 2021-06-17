@@ -24,4 +24,9 @@ public class Account {
 		return true;
 	}
 
+	public boolean decrement(double amount) {
+		balance = balance.subtract(new BigDecimal(amount));
+		return true;
+	}
+
 }

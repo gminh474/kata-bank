@@ -68,4 +68,31 @@ public class BankTest {
 		// then
         assertThrows(AccountNonExistentException.class, () -> bank.depositMoney(accountid, amount)); 
 	}
+
+	@Test
+	void should_withdraw_money() throws AccountNonExistentException {
+		//given
+		String accountid = DEFAULT_ACCOUNTID;
+		double amount = 50;
+		
+		// when
+		boolean isComplete = bank.withdrawMoney(accountid, amount);
+		
+		// then
+		assertThat(isComplete).isEqualTo(true);
+		assertThat(bank.getBalance(accountid)).isEqualTo(DEFAULT_BALANCE - amount);
+		
+	}
+
+	@Test
+	void should_withdraw_throw_AccountNonExistentException_when_account_not_exists()  {
+		// given
+		String accountid = "autreId";
+		double amount = 50;
+		
+		// when
+		
+		// then
+        assertThrows(AccountNonExistentException.class, () -> bank.withdrawMoney(accountid, amount)); 
+	}
 }

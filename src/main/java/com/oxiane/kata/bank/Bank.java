@@ -30,4 +30,9 @@ public class Bank {
 		
 	}
 
+	public boolean withdrawMoney(String accountid, double amount) throws AccountNonExistentException {
+		Optional<Account> optionalAccount = findAccount(accountid);
+		return optionalAccount.orElseThrow(() -> new AccountNonExistentException(accountid)).decrement(amount);
+	}
+
 }
