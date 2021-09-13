@@ -57,7 +57,7 @@ public class BankTest {
 		
 		// then
 		assertThat(isComplete).isEqualTo(true);
-		assertThat(bank.getBalance(accountid)).isEqualTo(amount - DEFAULT_BALANCE);
+		assertThat(bank.getBalance(accountid)).isEqualTo(amount + DEFAULT_BALANCE);
 		
 	}
 
